@@ -16,6 +16,12 @@ import destination from './components/destination/destination'
 
 import DestinationMore from './components/destination-more/destinationMore'
 
+import Hot from './components/hot/hot'
+
+import Line from './components/line/line'
+
+import LineDetail from './components/line-detail/lineDetail'
+
 // import ImgWrapper from './components/ImgWrapper/imgWrapper'
 
 Vue.use(VueRouter)
@@ -29,6 +35,18 @@ const routes=[
   {
     path:'/DestinationMore',
     component:DestinationMore
+  },
+  {
+    path:'/hot',
+    component:Hot
+  },
+  {
+    path:'/line',
+    component:Line
+  },
+  {
+    path:'/lineDetail',
+    component:LineDetail
   }
 ]
 
@@ -43,7 +61,9 @@ export default {
 
     destination,
     HeaderTop,
-    DestinationMore
+    DestinationMore,
+    Hot,
+    LineDetail
 
   }
 }
