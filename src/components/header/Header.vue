@@ -6,7 +6,7 @@
 			<li ><router-link to='/hot'>热门</router-link></li>
 			<li class='active'><router-link to='/destination'>目的地</router-link></li>
 			<li><router-link to='/line'>线路</router-link></li>
-			<li><router-link to='/DestinationMore'>驿站</router-link></li>
+			<li><router-link to='/inn'>驿站</router-link></li>
 			<li> <router-link to='/lineDetail'>大咖</router-link></li>
 			<li>资讯</li>
 			<li>更多</li>
@@ -35,11 +35,22 @@ export default {
 		}
 	}
 
+	// @media (min-width: 1000px) {
+	//   .header-container {
+	//     // display: none;
+	//     ul{
+	//     	margin-left: 40px;
+	//     }
+	//   }
+	// }
 	.header-container{
 		position:relative;
 		width:100%;
 		text-align: center;
 		min-width: 1200px;
+		
+
+
 		.header-icon{
 			display: inline-block;
 			vertical-align: middle;

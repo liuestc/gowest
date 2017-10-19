@@ -14,7 +14,8 @@
     "less-loader": "^4.0.5",
     "normalize.css": "^7.0.0",
     "vue": "^2.4.2",
-    "vue-awesome-swiper": "^2.6.7"
+    "vue-awesome-swiper": "^2.6.7",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

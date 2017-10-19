@@ -22,6 +22,8 @@ import Line from './components/line/line'
 
 import LineDetail from './components/line-detail/lineDetail'
 
+import Inn from './components/inn/inn'
+
 // import ImgWrapper from './components/ImgWrapper/imgWrapper'
 
 Vue.use(VueRouter)
@@ -47,6 +49,10 @@ const routes=[
   {
     path:'/lineDetail',
     component:LineDetail
+  },
+  {
+    path:'/inn',
+    component:Inn
   }
 ]
 
@@ -63,7 +69,8 @@ export default {
     HeaderTop,
     DestinationMore,
     Hot,
-    LineDetail
+    LineDetail,
+    Inn
 
   }
 }
