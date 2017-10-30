@@ -2,14 +2,14 @@
 	<div class='header-container'>
 		<div class="header-icon"><img src="../../assets/img/logo.png" alt=""></div>
 		<ul>
-			<li>首页</li>
+			<li><router-link to='/home'>首页</router-link></li>
 			<li ><router-link to='/hot'>热门</router-link></li>
 			<li class='active'><router-link to='/destination'>目的地</router-link></li>
 			<li><router-link to='/line'>线路</router-link></li>
 			<li><router-link to='/inn'>驿站</router-link></li>
 			<li> <router-link to='/lineDetail'>大咖</router-link></li>
 			<li>资讯</li>
-			<li>更多</li>
+			<li> <router-link to='/test'> 更多</router-link> </li>
 		</ul>
 
 		<div class='header-img'>

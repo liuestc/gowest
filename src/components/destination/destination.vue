@@ -117,6 +117,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 
 import 'swiper/dist/css/swiper.css'
 
@@ -151,8 +152,19 @@ export default {
       msg: 'Welcome to destination'
     }
   },
+  created (){
+  	// axios.get('139.129.118.14:8082/destination_listDestinationByAddress.json').then(function(res){
+  	// 	console.log(res)
+  	// })
+  	axios.get('http://139.129.118.14:8082/WestBoundA/destination_listDestinationByAddress.json?addressId=1').then((res)=>{
+  		console.log(res)
+  	}).catch(err=>{
+  		console.log(err)
+  	})
+
+  },
   router,
-   components: {
+  components: {
     swiper,
     swiperSlide,
     DestinationMore,

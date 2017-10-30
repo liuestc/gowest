@@ -16,7 +16,7 @@
               自古以来就是康巴藏区政治、经济、文化、商贸、信息中心和交通枢纽。
             全市幅员面积1.16万平方公里，是以藏族为主，汉、回、彝、羌等多民族聚居的城市。</p>
 
-                <p class="line2-btn">查看详情</p>
+                <p class="line2-btn"><router-link to='/destination'>查看详情</router-link></p>
               </div>            
           </div>
         </li>

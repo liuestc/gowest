@@ -24,6 +24,14 @@ import LineDetail from './components/line-detail/lineDetail'
 
 import Inn from './components/inn/inn'
 
+import InnDetail from './components/inn-detail/innerDetail'
+
+
+import Home from './components/home/home'
+
+import Test from './components/test/test'
+
+import axios from 'axios'
 // import ImgWrapper from './components/ImgWrapper/imgWrapper'
 
 Vue.use(VueRouter)
@@ -53,6 +61,17 @@ const routes=[
   {
     path:'/inn',
     component:Inn
+  },
+  {
+    path:'/innDetail',
+    component:InnDetail
+  },{
+    path:'/home',
+    component:Home
+  }
+  ,{
+    path:'/test',
+    component:Test
   }
 ]
 
@@ -70,7 +89,9 @@ export default {
     DestinationMore,
     Hot,
     LineDetail,
-    Inn
+    Inn,
+    InnDetail
+    ,Test
 
   }
 }

@@ -20,7 +20,7 @@
 
             <div class="price-container">
               <p class="inn-price">价格 ： 199￥</p>
-              <p class="line-detail">查看详情</p> 
+              <p class="line-detail"><router-link to='/innDetail'>查看详情</router-link></p> 
             </div>
           </li>
           <li class='list'>

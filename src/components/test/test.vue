@@ -1,76 +1,71 @@
 <template>
-	<div class='img-container'>
-    <div>00000   IMGWRAPPER</div>
-    <div v-for='item in lists'>
-      <img src="item.imgUrl" alt="">
-
-      <div class='word-wrapper'>
-        <p class='img-title'>{{item.title}}</p>
-        <p class="img-describe">
-          {{item.more}}
-        </p>
-      </div>
-    </div>
-	</div>
+  <div class="test">
+    我是test
+    <wrapper  :lists='list'></wrapper>
+  </div>
 </template>
 
 <script>
 
-// import MyHeader from '../header/Header'
+import wrapper from '../imgWrapper/imgWrapper'
+
 export default {
-  name: 'ImgWrapper',
+  name: 'HelloWorld',
   data () {
     return {
-        // flex: 4,
-        demo:""
-    }
-  },
-  props:{
-    flex:{
-      type:Number,
-      default:4
-    },
-    lists:{
-      Type:Object,
-      default:function(){
-        return [
+      msg: 'Welcome to Your Vue.js App',
+
+      list:[
           {
             imgUrl:'./img/b1.png',
+            title:"这里是一个title1",
+            word:"akjajkjskhfjmbsdhkjn,,ednksjdejkndejknemzhajkendkjajkajdjnx",
+            more:"dkjfbjfbvulrhnfvidajnkcnkj.wshndissndfjv hendbc njkwaenjdzzdbdjkaebd"
+          },
+          {
+            imgUrl:'./img/b2.png2',
             title:"这里是一个title",
             word:"akjajkjskhfjmbsdhkjn,,ednksjdejkndejknemzhajkendkjajkajdjnx",
             more:"dkjfbjfbvulrhnfvidajnkcnkj.wshndissndfjv hendbc njkwaenjdzzdbdjkaebd"
           },
           {
-            imgUrl:'./img/b2.png',
-            title:"这里是一个title",
-            word:"akjajkjskhfjmbsdhkjn,,ednksjdejkndejknemzhajkendkjajkajdjnx",
-            more:"dkjfbjfbvulrhnfvidajnkcnkj.wshndissndfjv hendbc njkwaenjdzzdbdjkaebd"
-          },
-          {
-            imgUrl:'./img/b3.png',
+            imgUrl:'./img/b3.png3',
             title:"这里是一个title",
             word:"akjajkjskhfjmbsdhkjn,,ednksjdejkndejknemzhajkendkjajkajdjnx",
             more:"dkjfbjfbvulrhnfvidajnkcnkj.wshndissndfjv hendbc njkwaenjdzzdbdjkaebd"
           },
           {
             imgUrl:'./img/b1.png',
-            title:"这里是一个title",
+            title:"这里是一个title4",
             word:"akjajkjskhfjmbsdhkjn,,ednksjdejkndejknemzhajkendkjajkajdjnx",
             more:"dkjfbjfbvulrhnfvidajnkcnkj.wshndissndfjv hendbc njkwaenjdzzdbdjkaebd"
           }
         ]
-      }
-    },
-    paddingLeft:{
-      default:"20px",
-      Type:"String"
     }
   },
-  componemts:{
-  	// MyHeader
+  components:{
+    wrapper
   }
 }
 </script>
-<style lang='less'>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h1, h2 {
+  font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+a {
+  color: #42b983;
+}
 </style>
