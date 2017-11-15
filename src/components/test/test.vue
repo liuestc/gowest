@@ -15,32 +15,7 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
 
-      list:[
-          {
-            imgUrl:'./img/b1.png',
-            title:"这里是一个title1",
-            word:"akjajkjskhfjmbsdhkjn,,ednksjdejkndejknemzhajkendkjajkajdjnx",
-            more:"dkjfbjfbvulrhnfvidajnkcnkj.wshndissndfjv hendbc njkwaenjdzzdbdjkaebd"
-          },
-          {
-            imgUrl:'./img/b2.png2',
-            title:"这里是一个title",
-            word:"akjajkjskhfjmbsdhkjn,,ednksjdejkndejknemzhajkendkjajkajdjnx",
-            more:"dkjfbjfbvulrhnfvidajnkcnkj.wshndissndfjv hendbc njkwaenjdzzdbdjkaebd"
-          },
-          {
-            imgUrl:'./img/b3.png3',
-            title:"这里是一个title",
-            word:"akjajkjskhfjmbsdhkjn,,ednksjdejkndejknemzhajkendkjajkajdjnx",
-            more:"dkjfbjfbvulrhnfvidajnkcnkj.wshndissndfjv hendbc njkwaenjdzzdbdjkaebd"
-          },
-          {
-            imgUrl:'./img/b1.png',
-            title:"这里是一个title4",
-            word:"akjajkjskhfjmbsdhkjn,,ednksjdejkndejknemzhajkendkjajkajdjnx",
-            more:"dkjfbjfbvulrhnfvidajnkcnkj.wshndissndfjv hendbc njkwaenjdzzdbdjkaebd"
-          }
-        ]
+      list:""
     }
   },
   components:{

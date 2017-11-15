@@ -1,57 +1,28 @@
 <template>
   <div class="home-container">
-	<div class="line-container">
+	<div class="line-cotainer-home">
 		<div class="title">
-			热门线路
+			线路
 		</div>
 
-		<ul class="line-lists">
-			<li>
-				<img src="./img/12.png" alt="">
-				<div class="p-container">
-					<p class="list-title">最美西宁 </p>
-					<p class="list-long">全长2000公里</p>
+		<ul class="line-lists" ref='imgauto'>
+			<li v-for='item in routers' >
+				<img :src="item.cover" alt=""  id='lines-img' v-bind:style="{  height: clientHeight + 'px' }">
+				<router-link class="p-container" :to='{name:"lineDetail",params:{id:item.id}}'  tag='div'>
+					<p class="list-title">{{item.name}} </p>
+					<p class="list-long">全长<span class='list-long-content'>{{item.mileage}}</span>公里</p>
 					<p class="list-step">
-						长沙--重庆--成都--昆明--拉萨--西宁--西安--北京
+						{{item.middlePoint}}
 					</p>
+					
+					<div class="list-days-wrapper">
+						<p class="list-days"><span >{{item.dayNum}}</span>天</p>
+						<p class="list-start">{{item.origin}} 出发&nbsp;></p>						
+					</div>
 
-					<p class="list-days"><span >5</span>天</p>
-					<p class="list-start">温江出发</p>
-				</div>
+				</router-link>
 
-			</li>
-
-
-			<li>
-				<img src="./img/12.png" alt="">
-				<div class="p-container">
-					<p class="list-title">最美西宁 </p>
-					<p class="list-long">全长2000公里</p>
-					<p class="list-step">
-						长沙--重庆--成都--昆明--拉萨--西宁--西安--北京
-					</p>
-
-					<p class="list-days"><span >5</span>天</p>
-					<p class="list-start">温江出发</p>
-				</div>
-
-			</li>
-
-
-			<li>
-				<img src="./img/12.png" alt="">
-				<div class="p-container">
-					<p class="list-title">最美西宁 </p>
-					<p class="list-long">全长2000公里</p>
-					<p class="list-step">
-						长沙--重庆--成都--昆明--拉萨--西宁--西安--北京
-					</p>
-
-					<p class="list-days"><span >5</span>天</p>
-					<p class="list-start">温江出发</p>
-				</div>
-
-			</li>								
+			</li>	
 
 		</ul>
 	</div>
@@ -61,56 +32,57 @@
 			大咖   
 		</div>
 
-		<div class="vip-img">
-			<img src="./img/avatar.png" alt="">
+		<router-link class="vip-img" tag='div' :to='{name:"celebrityDetail",params:{id:celebrity.id}}' >
+			<img :src="celebrity.headPortrait" alt="">
 			<div class="vip-desc">
-				<p class="vip-name">窃热</p>
+				<p class="vip-name">{{celebrity.name}}</p>
 				<p class="vip-line">
-					入藏驾龄： 8年
+					驾龄： {{celebrity.journeyNum?celebrity.journeyNum:10}}年
 				</p>
-				<p class="vip-exp">参与路线：川藏线 青藏线</p>
+				<p class="vip-exp">技能：{{celebrity.profession}}</p>
 			</div>
 
 			<div class="vip-more">
-				切热师傅是个极具感染力的人，他性格温和对人诚恳，总是竭尽全力的帮助身边的每个人，用自己的热情温暖旅客，谦虚、忠诚、微笑是很多客人对他的评价。切热师傅2从008年开始进藏，他把自己最美好的年华在西藏，川藏线、青藏线、滇藏线、墨脱、都留下他的脚印。跟随切热师傅游览西藏，你会有很多意外收获，他会带着你去领略西域最不可错过的美丽。
+				{{celebrity.describe}}
 			</div>
-		</div>
+		</router-link>
 	</div>
 
-	<div class="info-container">
+	<div class="info-container2">
 		<div class="title">
 			资讯
 		</div>
-		<div class="info-img">
-			<img src="./img/m2.png" alt="">
-		</div>
+		<router-link class="info-img" tag='div'  :to='{name:"infoDetail",params:{id:news.id}}'>
+			<img :src="news.cover" alt="">
+		</router-link>
 	</div>
 
 
 	<div class="activity-container">
-		<img src="./img/m3.png" alt="">
+		<img :src="activity.cover" alt="">
 
 		<div class="activity-desc">
-			<div class="title">
+			<div class="title hd">
 				活动
 			</div>
-			<p>
-				彝族是一个崇拜火的民族，每年农历6月24日是彝族最热闹的节日——火把节。期间，凉山各地都将举办各种丰富多彩的活动，国内外游客相约来凉山“玩火”。今年的火把节比去年更早一些，活动主要在西昌、普格、昭觉、布拖4县市，活动包含美食、民俗...
+			<p class='activity-desc-content'>
+				{{activity.describe}}
 			</p>
+			<!-- <p class='view'> READ&nbsp;MORE</p> -->
 		</div>
 
 	</div>
 
 
 
-	<div class="inn-container">
+	<div class="inn-container2">
 		
 
 		<div class="activity-desc">
-			<div class="title">
+			<div class="title hd">
 				驿站
 			</div>
-			<p>
+			<p class='inn-desc-content'>
 				彝族是一个崇拜火的民族，每年农历6月24日是彝族最热闹的节日——火把节。期间，凉山各地都将举办各种丰富多彩的活动，国内外游客相约来凉山“玩火”。今年的火把节比去年更早一些，活动主要在西昌、普格、昭觉、布拖4县市，活动包含美食、民俗...
 			</p>
 
@@ -121,12 +93,10 @@
 				<li><img src="./img/1.png" alt=""> <span>餐饮娱乐</span></li>
 				<li><img src="./img/1.png" alt=""> <span>餐饮娱乐</span></li>
 				<li><img src="./img/1.png" alt=""> <span>餐饮娱乐</span></li>
-				<!-- <li><img src="./img/1.png" alt=""> <span>餐饮娱乐</span></li> -->
 			</ul>
 		</div>
 
 		<img src="./img/m4.png" alt="">
-
 	</div>	
 
 
@@ -136,15 +106,50 @@
 </template>
 
 <script>
-
-
-// import ImgWrapper from './components/ImgWrapper/imgWrapper'
-
-
+import Vue from 'vue'
+import axios from 'axios'
 export default {
-  name: 'Inn',
+  name: 'Home',
   components: {
 
+  },
+  data(){
+  	return {
+  		routers:{},
+  		celebrity:"",
+  		activity:"",
+  		news:"",
+  		clientHeight:""
+  	}
+  },
+
+  created(){
+  	this.getData()
+  },
+  mounted(){
+  	
+	console.log("图片",this.$refs.imgauto.clientWidth)
+  	this.$nextTick(() => {
+  		console.log(document.getElementById("lines-img"))
+	 	// this.clientWidth= `${document.querySelector(".lines-img").clientWidth}px`;
+	 	// console.log(this.clientWidth)
+	 	this.clientHeight = (this.$refs.imgauto.clientWidth*.9)/(3*1.6);
+	    const that = this;
+	    window.onresize = function temp() {
+	        that.clientHeight = (that.$refs.imgauto.clientWidth*.9)/(3*1.6);
+	    };
+    })
+  },
+  methods:{
+  	getData(){
+  		axios("http://139.129.118.14:8082/WestBoundA/getContentForHomePage.json").then((res)=>{
+  			console.log(res.data)
+  			this.routers=res.data.routes.slice(0,3)
+  			this.activity=res.data.activity[0]
+  			this.celebrity=res.data.bigShots[0]
+  			this.news=res.data.news[0]
+  		})
+  	}
   }
 }
 </script>
@@ -152,7 +157,6 @@ export default {
 <style lang='less'>
 a{
   text-decoration:none;
-  /*color:#000;*/
 }
 
 ul,li{
@@ -166,62 +170,92 @@ p{
 }
 
 .title{
-	font-size:36px;
+	font-size:30px;
 	color:#232323;
-	margin-bottom:44px;
-	margin-top: 44px;
+	margin-bottom:30px;
+	// margin-top: 44px;
+	font-weight: 600;
+	position: relative;
 }
+
 .title::before{
-	content:"|";
+	content:"  ";
+	position: absolute;
+	top:4px;
 	display: inline-block;
-	padding-right: 4px;
+	padding-right: 6px;
 	width:2px;
-	height:100%;
+	height:32px;
+	left:-18px;
 	background-color: rgba(80, 187, 219, 1);
-	color:rgba(80, 187, 219, 1);
+	color:#fff;
 }
+
+.hd::before{
+	top:8px;
+}
+
+
+// @media (max-width: 800px) {
+// 	.home-container .line-cotainer-home .line-lists li img{
+// 		height:80px !important;
+// 	}
+// }
+
+// @media (max-width: 1200px) {
+// 	.home-container .line-cotainer-home .line-lists li img{
+// 		height:100px !important;
+// 	}
+// }
+
+// @media (min-width: 1400px) {
+// 	.home-container .line-cotainer-home .line-lists li img{
+// 		min-height:210px !important;
+// 	}
+// }
 
 .home-container{
 	width:64%;
 	margin:0 auto;
-	.line-container{
+	padding-bottom:500px;
+	.line-cotainer-home{
 		
 		margin:60px 0;
-
-		.title{
-			font-size:36px;
-			color:#232323;
-			margin-bottom:44px;
-		}
-		.title::before{
-			content:"|";
-			display: inline-block;
-			padding-right: 4px;
-			width:2px;
-			height:100%;
-			background-color: rgba(80, 187, 219, 1);
-			color:rgba(80, 187, 219, 1);
-		}
 		.line-lists{
 			display: flex;
+			flex-wrap:wrap;
 
 			font-size: 14px;
+			// justify-content:center;
+
+			li:hover{
+				box-shadow: 0px 5px 11.6px 1.4px rgba(4, 0, 0, 0.05);
+			}
 
 			li{
 				flex:0 1 32%;
-				margin-right:44px;
-				box-shadow: 1px 1px 2px 2px #ccc;
+				position: relative;
+				box-sizing: border-box;
+				margin-right:2%;
+				// box-shadow: 0px 5px 11.6px 1.4px rgba(4, 0, 0, 0.05);
 				padding-bottom:20px;
+				margin-bottom:50px;
 
 				img{
-					width:100%;margin-bottom: 24px;
+					width:100%;
+					margin-bottom: 16px;
+					// height:144px;
+					// max-height:250px;
 				}
 				.p-container{
 				
 				padding:0 20px;
+				// position: absolute;
+				// bottom:0;
 
 				.list-title{
-					font-size: 24px;
+					font-weight:800;
+					font-size: 22px;
 					display: inline-block;
 				}
 				.list-long{
@@ -229,30 +263,44 @@ p{
 					float:right;
 					line-height: 24px;
 					padding-top:5px;
-				}
-
-				.list-step{
-					padding:24px 0;
-					line-height: 21.97148px;
-					letter-spacing: 0px;
-					color: #959595;
-
-				}
-				.list-days{
-					font-size:20px;
-					display: inline-block;
-					span{
+					.list-long-content{
 						color: #50bbdb;
-						display: inline-block;
-						padding-right:1em;
 					}
 				}
 
-				.list-start{
-					float: right;
-					display: inline-block;
-					padding-top:4px;
+				.list-step{
+					padding:16px 0 16px 0;
+					line-height: 22px;
+					letter-spacing: 0px;
+					color: #959595;
+					margin-bottom:50px;
+					font-weight:300;
+
 				}
+
+				.list-days-wrapper{
+					width:80%;
+					position: absolute;
+					bottom:0;
+					margin-bottom:24px;
+					.list-days{
+						font-size:20px;
+						display: inline-block;
+						span{
+							color: #50bbdb;
+							display: inline-block;
+							padding-right:1em;
+						}
+					}
+
+					.list-start{
+						// font-family: ﻿SourceHanSansCN-Regular;
+						float: right;
+						display: inline-block;
+						padding-top:4px;
+					}
+				}
+
 				}
 
 
@@ -278,9 +326,11 @@ p{
 		.vip-img{
 			img{
 				width:115px;
+				height:115px;
 				display: inline-block;
 				vertical-align: middle;
 				margin-right:26px;
+				border-radius:50%;
 			}
 		}
 
@@ -292,8 +342,10 @@ p{
 				padding-bottom:10px; 
 			}
 
-			.vip-line,.vip-desc{
-				padding:10px 0;
+			.vip-line,.vip-exp{
+				padding:2px 0;
+				color: #959595;
+				font-weight:300;
 			}
 
 		}
@@ -303,10 +355,11 @@ p{
 			color: #959595;
 			text-align: justify;
 			line-height: 1.5;
+			font-weight:300;
 		}		
 
 	}
-	.info-container{
+	.info-container2{
 		paddin:0;
 		margin:0;
 		box-sizing: border-box;
@@ -316,16 +369,18 @@ p{
 		.info-img{
 			img{
 				width:100%;
+				max-height:240px;
 				// vertical-align: middle;
 			}
 		}
 	}
 	.activity-container{
-		margin-top:188px;
+		margin-top:120px;
 		img{
 			display: inline-block;
 			width: 49%;
 			vertical-align: top;
+			max-height:240px;
 		}
 		.activity-desc{
 			// flex:0 0 50%;
@@ -333,23 +388,26 @@ p{
 			padding-left:40px;
 			display: inline-block;
 			width:50%;
-			.title{
-				margin-top:0;
-			}
+			// .title{
+			// 	margin-top:0;
+			// }
+
+
 
 			color: #959595;
 			line-height:1.5;
 		}
 
 	}
-	.inn-container{
-		margin-top:188px;
+	.inn-container2{
+		margin-top:120px;
 		img{
 			display: inline-block;
 			width: 49%;
 			vertical-align: middle;
 			box-sizing: border-box;
 			padding-left: 40px;
+			padding-top:16px;
 		}
 		.activity-desc{
 			// flex:0 0 50%;
@@ -358,19 +416,20 @@ p{
 			display: inline-block;
 			vertical-align: middle;
 			width:50%;
-			.title{
-				margin-top:0;
-			}
+			// .title{
+			// 	margin-top:0;
+			// }
 			.icon-list{
 				li{
 					display: inline-block;
 					width:49%;
-					margin:1em 0;
+					margin:6px 0;
 					color:#000;
 					img{
 						width:46px;
 						padding-left:10px;
 						vertical-align: middle;
+						margin-right:16px;
 					}
 				}
 			}
@@ -382,4 +441,26 @@ p{
 
 }
 
+
+// p.list-step{position: relative;  max-height: 77px;overflow: hidden; width:100%}
+// p.list-step::after{content: "..."; position: absolute; bottom: 0; right: 0;
+// background: -webkit-linear-gradient(left, transparent, #fff 55%);
+// background: -o-linear-gradient(right, transparent, #fff 55%);
+// background: -moz-linear-gradient(right, transparent, #fff 55%);
+// background: linear-gradient(to right, transparent, #fff 55%);
+// }
+
+
+.activity-desc-content,.inn-desc-content{
+	font-weight:300;
+	margin-bottom:20px;
+}
+
+.view{
+	display: inline-block;
+    font-size: 12px;
+    padding: 6px 12px;
+	border:1px solid #232323;
+	color: #232323;
+}
 </style>

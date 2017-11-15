@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <HeaderTop></HeaderTop>
+    <HeaderTop :img='img'></HeaderTop>
     <!-- <router-link to='/destination'>目的地</router-link> -->
 
     <router-view></router-view> 
+    <Foot></Foot>
   </div>
 </template>
 
@@ -26,20 +27,43 @@ import Inn from './components/inn/inn'
 
 import InnDetail from './components/inn-detail/innerDetail'
 
-
 import Home from './components/home/home'
+
+import Celebrity from './components/celebrity/celebrity'
+
+import CelebrityDetail from './components/celebrityDetail/celebrityDetail'
+
+import Info from './components/info/info'
+
+import InfoDetail from './components/infoDetail/infoDetail'
+
+import Foot from './components/footer/footer'
+
+import CelebrityArticle from './components/celebrityArticle/celebrityArticle'
 
 import Test from './components/test/test'
 
+import About from './components/aboutus/about'
+
 import axios from 'axios'
-// import ImgWrapper from './components/ImgWrapper/imgWrapper'
+
 
 Vue.use(VueRouter)
 
 const routes=[
   {
+    path: '/', 
+    redirect: '/home'
+  },
+  {
     path:'/destination',
-    component:destination
+    component:destination,
+    children:[
+      {
+        path:'test',
+        component:DestinationMore
+      }
+    ]
 
   },
   {
@@ -55,7 +79,8 @@ const routes=[
     component:Line
   },
   {
-    path:'/lineDetail',
+    name:'lineDetail',
+    path:'/line/:id',
     component:LineDetail
   },
   {
@@ -72,6 +97,43 @@ const routes=[
   ,{
     path:'/test',
     component:Test
+  },
+  {
+    name:'destinationmore',
+    path:'/destination/:id',
+    component:DestinationMore
+  },
+
+  {
+    name:'innDetail',
+    path:'/inn/:id',
+    component:InnDetail
+  },
+  {
+    path:'/celebrity',
+    component:Celebrity,
+
+  },
+  {
+    name:'celebrityDetail',
+    path:'/celebrity/:id',
+    component:CelebrityDetail
+  },
+  {
+    path:'/info',
+    component:Info
+  },{
+    name:'infoDetail',
+    path:'/info/:id',
+    component:InfoDetail
+  },
+  {
+    name:'celebrityArticle',
+    path:'/celebrity/article/:id',
+    component:CelebrityArticle
+  },{
+    path:'/about',
+    component:About
   }
 ]
 
@@ -83,7 +145,6 @@ export default {
   name: 'app',
   router,
   components: {
-
     destination,
     HeaderTop,
     DestinationMore,
@@ -91,15 +152,157 @@ export default {
     LineDetail,
     Inn,
     InnDetail
-    ,Test
+    ,Test,
+    Celebrity,
+    CelebrityDetail,
+    Info,
+    InfoDetail,
+    Foot,
+    CelebrityArticle,
+    About
 
+  },
+
+  data(){
+    return {
+      img:""
+    }
+  },
+  created (){
+
+  },
+
+  methods:{
+    toggleImg(){
+      console.log(2)
+    }
+  },
+
+  mounted(){
+    // console.log("APP route",this.$route)
+    let path=this.$route.path
+    switch (path){
+        case '/home':
+        this.img='/static/home.jpg'
+        break;
+
+        case '/hot':
+        this.img='/static/remen.png'
+        break;
+
+        case '/destination':
+        this.img='/static/des.png'
+        break;
+
+        case '/line':
+        this.img='/static/line.png'
+        break;
+
+
+        case '/inn':
+        this.img='/static/yizhan.png'
+        break;
+
+        case '/celebrity':
+        this.img='/static/daka.png'
+        break;
+
+        case '/info':
+        this.img='/static/line.png'
+        break;
+
+        case '/about':
+        this.img='/static/des.png'
+        break;
+
+      }
+
+      if(path.indexOf('/line/')!==-1){
+
+        this.img='/static/line.png'
+      }
+
+  },
+
+  // props:{
+  //   img:{
+  //     type:String
+  //   }
+  // },
+
+  watch:{
+    '$route'(to,from){
+      console.log("app route!!!!",to.path)
+      let path=to.path
+
+
+  switch (path){
+      case '/home':
+      this.img='/static/home.jpg'
+      break;
+
+      case '/hot':
+      this.img='/static/remen.png'
+      break;
+
+      case '/destination':
+      this.img='/static/des.png'
+      break;
+
+      case '/line':
+      this.img='/static/line.png'
+      break;
+
+
+      case '/inn':
+      this.img='/static/yizhan.png'
+      break;
+
+      case '/celebrity':
+      this.img='/static/daka.png'
+      break;
+
+      case '/info':
+      this.img='/static/line.png'
+      break;
+
+      case '/about':
+      this.img='/static/des.png'
+      break;
+
+    }
+  if(path.indexOf('/line/')!==-1){
+
+    this.img='/static/line.png'
+  }
+  if(path.indexOf('/celebrity/')!==-1){
+
+    this.img='/static/daka.png'
+  }
+  if(path.indexOf('/info/')!==-1){
+
+    this.img='/static/line.png'
+  }
+
+    }
   }
 }
 </script>
 
 <style>
+#app{
+position: relative;
+}
+*{
+  padding:0;
+  margin:0;
+}
 a{
   text-decoration:none;
-  /*color:#000;*/
+  color:#000;
+}
+
+a:hover{
+  cursor: pointer!important;
 }
 </style>
